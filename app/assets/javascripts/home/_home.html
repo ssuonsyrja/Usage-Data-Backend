@@ -1,0 +1,39 @@
+
+<div class="page-header">
+  <h1>Stats for widget use</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <canvas id="doughnut" class="chart chart-doughnut" chart-data="event_count_by_widget" chart-labels="widgets">
+    </canvas>
+  </div>
+  <div class="col-md-6">
+    <canvas id="bar" class="chart chart-bar" chart-data="event_count_by_widget_and_customer" chart-labels="widgets" chart-series="customers">
+    </canvas
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table ng-table="tableParams" class="table" show-filter="true">
+      <tr ng-repeat="post in data">
+          <td title="'Count'" sortable="'count'">
+            {{post.count}}
+          </td>
+          <td title="'Event'" filter="{ event_type: 'text'}" sortable="'event_type'">
+            {{post.event_type}}
+          </td>
+          <td title="'Target'" sortable="'target'">
+            {{post.target}}
+          </td>
+          <td title="'Host'" filter="{ host: 'text'}" sortable="'host'">
+            {{post.host}}
+          </td>
+          <td title="'Widget'" filter="{ widget: 'text'}" sortable="'widget'">
+            {{post.widget}}
+          </td>
+      </tr>
+    </table>
+  </div>
+</div>
