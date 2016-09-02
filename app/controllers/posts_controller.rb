@@ -5,19 +5,19 @@ class PostsController < ApplicationController
   end
 
   def create
-    old = Post.where event_type: params[:event_type]
+    old = Post.where event_type: params[:post][:event_type]
     if old == nil
       respond_with Post.create(post_params)
     else
-      same_old = old.where target: params[:target]
+      same_old = old.where target: params[:post][:target]
       if same_old == nil
         respond_with Post.create(post_params)
       else
-        old_same_old = same_old.where host: params[:host]
+        old_same_old = same_old.where host: params[:post][:host]
         if old_same_old == nil
           respond_with Post.create(post_params)
         else
-          same_old_same_old = old_same_old.find_by widget: params[:widget]
+          same_old_same_old = old_same_old.find_by widget: params[:post][:widget]
           if same_old_same_old == nil
             respond_with Post.create(post_params)
           else
