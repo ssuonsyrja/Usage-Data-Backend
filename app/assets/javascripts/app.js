@@ -10,18 +10,18 @@ angular.module('flapperNews', ['ngTable', 'chart.js', 'ui.router', 'templates'])
       templateUrl: 'home/_home.html',
       controller: 'MainCtrl',
       resolve: {
-        postPromise: ['posts', function(posts){
-          return posts.getAll();
+        eventPromise: ['events', function(events){
+          return events.getAll();
         }]
       }
     })
-    .state('posts', {
-      url: '/posts/{id}',
-      templateUrl: 'posts/_posts.html',
-      controller: 'PostsCtrl',
+    .state('events', {
+      url: '/events/{id}',
+      templateUrl: 'events/_events.html',
+      controller: 'EventsCtrl',
       resolve: {
-        post: ['$stateParams', 'posts', function($stateParams, posts) {
-          return posts.get($stateParams.id);
+        event: ['$stateParams', 'events', function($stateParams, events) {
+          return events.get($stateParams.id);
         }]
       }
     });

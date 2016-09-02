@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :posts, only: [:create, :index, :show] do
+  resources :events, only: [:create, :index, :show] do
     resources :comments, only: [:show, :create] do
       member do
         put '/upvote' => 'comments#upvote'
@@ -22,10 +22,10 @@ Rails.application.routes.draw do
     end
 
     member do
-      put '/upvote' => 'posts#upvote'
+      put '/upvote' => 'events#upvote'
     end
   end
-  
+
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -2,21 +2,21 @@ angular.module('flapperNews')
 .controller('MainCtrl', [
   '$scope',
   '$filter',
-  'posts',
+  'events',
   'NgTableParams',
-  function($scope, $filter, posts, NgTableParams){
+  function($scope, $filter, events, NgTableParams){
 
-    // Start mirroring the posts in this controller with the ones
+    // Start mirroring the events in this controller with the ones
     // in the factory with this data binding.
-    $scope.posts = posts.posts;
-    //$scope.tableParams = new NgTableParams({}, { dataset: posts});
+    $scope.events = events.events;
+    //$scope.tableParams = new NgTableParams({}, { dataset: events});
     $scope.tableParams = new NgTableParams({
         page: 1,
         count: 10
     }, {
-        total: $scope.posts.length,
+        total: $scope.events.length,
         getData: function ($defer, params) {
-           $scope.data = params.sorting() ? $filter('orderBy')($scope.posts, params.orderBy()) : $scope.posts;
+           $scope.data = params.sorting() ? $filter('orderBy')($scope.events, params.orderBy()) : $scope.events;
            $scope.data = params.filter() ? $filter('filter')($scope.data, params.filter()) : $scope.data;
            $scope.data = $scope.data.slice((params.page() - 1) * params.count(), params.page() * params.count());
            $defer.resolve($scope.data);
@@ -32,20 +32,20 @@ angular.module('flapperNews')
     $scope.event_count_by_widget_and_customer = [];
 
     // Extract data from the individual events into event counts by widget.
-    for(i=0;i<$scope.posts.length;i++){
+    for(i=0;i<$scope.events.length;i++){
 
       // Test if the widget and the customer are found already from the extracted information.
-      customer_index = $scope.customers.indexOf($scope.posts[i].host);
-      widget_index = $scope.widgets.indexOf($scope.posts[i].widget);
+      customer_index = $scope.customers.indexOf($scope.events[i].host);
+      widget_index = $scope.widgets.indexOf($scope.events[i].widget);
       if( widget_index === -1){
-        $scope.widgets.push($scope.posts[i].widget);
-        $scope.event_count_by_widget.push($scope.posts[i].count);
+        $scope.widgets.push($scope.events[i].widget);
+        $scope.event_count_by_widget.push($scope.events[i].count);
       }else{
-        $scope.event_count_by_widget[widget_index] += $scope.posts[i].count;
+        $scope.event_count_by_widget[widget_index] += $scope.events[i].count;
       }
       // Collect the amount of customers at the same time
       if( customer_index === -1 ){
-        $scope.customers.push($scope.posts[i].host);
+        $scope.customers.push($scope.events[i].host);
       }
     }
 
@@ -60,28 +60,28 @@ angular.module('flapperNews')
     }
 
     // Extract click data from the individual events into event counts by customer and widget.
-    for(l=0;l<$scope.posts.length;l++){
-      if( $scope.posts[l].event_type === "click"){
+    for(l=0;l<$scope.events.length;l++){
+      if( $scope.events[l].event_type === "click"){
 
         // Check the index of the customer and the widget.
-        customer_index_2 = $scope.customers.indexOf($scope.posts[l].host);
-        widget_index_2 = $scope.widgets.indexOf($scope.posts[l].widget);
+        customer_index_2 = $scope.customers.indexOf($scope.events[l].host);
+        widget_index_2 = $scope.widgets.indexOf($scope.events[l].widget);
 
         // Increase the count of the events for the right customer and widget.
-        $scope.event_count_by_widget_and_customer[customer_index_2][widget_index_2] += $scope.posts[l].count;
+        $scope.event_count_by_widget_and_customer[customer_index_2][widget_index_2] += $scope.events[l].count;
       }
     }
-    
-    $scope.addPost = function(){
+
+    $scope.addEvent = function(){
       if(!$scope.title || $scope.title === '') { return; }
 
-      posts.create({
+      events.create({
         title: $scope.title,
         link: $scope.link,
         upvotes: 0
       });
       /*
-      $scope.posts.push({
+      $scope.events.push({
         title: $scope.title,
         link: $scope.link,
         upvotes: 0,
@@ -95,8 +95,8 @@ angular.module('flapperNews')
       $scope.title = '';
     };
 
-    $scope.incrementUpvotes = function(post) {
-      posts.upvote(post);
+    $scope.incrementUpvotes = function(event) {
+      events.upvote(event);
     };
   }
 ]);

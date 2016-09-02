@@ -17,21 +17,21 @@
 <div class="row">
   <div class="col-md-12">
     <table ng-table="tableParams" class="table" show-filter="true">
-      <tr ng-repeat="post in data">
+      <tr ng-repeat="event in data">
           <td title="'Count'" sortable="'count'">
-            {{post.count}}
+            {{event.count}}
           </td>
           <td title="'Event'" filter="{ event_type: 'text'}" sortable="'event_type'">
-            {{post.event_type}}
+            {{event.event_type}}
           </td>
           <td title="'Target'" sortable="'target'">
-            {{post.target}}
+            {{event.target}}
           </td>
           <td title="'Host'" filter="{ host: 'text'}" sortable="'host'">
-            {{post.host}}
+            {{event.host}}
           </td>
           <td title="'Widget'" filter="{ widget: 'text'}" sortable="'widget'">
-            {{post.widget}}
+            {{event.widget}}
           </td>
       </tr>
     </table>
