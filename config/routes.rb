@@ -15,12 +15,6 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :events, only: [:create, :index, :show] do
-    resources :comments, only: [:show, :create] do
-      member do
-        put '/upvote' => 'comments#upvote'
-      end
-    end
-
     member do
       put '/upvote' => 'events#upvote'
     end

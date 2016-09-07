@@ -11,26 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902125513) do
-
-  create_table "comments", force: :cascade do |t|
-    t.string   "body"
-    t.integer  "upvotes"
-    t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
+ActiveRecord::Schema.define(version: 20160907114505) do
 
   create_table "events", force: :cascade do |t|
-    t.string   "event_type"
     t.string   "target"
-    t.integer  "count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "host"
-    t.string   "widget"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "timestamp"
+    t.string   "eventType"
+    t.string   "targetBaseURI"
+    t.string   "targetValue"
+    t.string   "targetInnerText"
+    t.string   "targetId"
   end
 
 end

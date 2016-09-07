@@ -80,17 +80,7 @@ angular.module('flapperNews')
         link: $scope.link,
         upvotes: 0
       });
-      /*
-      $scope.events.push({
-        title: $scope.title,
-        link: $scope.link,
-        upvotes: 0,
-        comments: [
-          {author: 'Joe', body: 'Good job guys!', upvotes: 0},
-          {author: 'Bob', body: 'Great idea but everthing is wrong!', upvotes: 0}
-        ]
-      });
-      */
+    
       $scope.link = '';
       $scope.title = '';
     };

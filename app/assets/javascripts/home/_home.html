@@ -18,20 +18,26 @@
   <div class="col-md-12">
     <table ng-table="tableParams" class="table" show-filter="true">
       <tr ng-repeat="event in data">
-          <td title="'Count'" sortable="'count'">
-            {{event.count}}
+          <td title="'Timestamp'" sortable="'timestamp'">
+            {{event.timestamp}}
           </td>
-          <td title="'Event'" filter="{ event_type: 'text'}" sortable="'event_type'">
-            {{event.event_type}}
+          <td title="'Type'" filter="{ type: 'text'}" sortable="'type'">
+            {{event.type}}
           </td>
           <td title="'Target'" sortable="'target'">
             {{event.target}}
           </td>
-          <td title="'Host'" filter="{ host: 'text'}" sortable="'host'">
-            {{event.host}}
+          <td title="'BaseURI'" filter="{ targetBaseURI: 'text'}" sortable="'targetBaseURI'">
+            {{event.targetBaseURI}}
           </td>
-          <td title="'Widget'" filter="{ widget: 'text'}" sortable="'widget'">
-            {{event.widget}}
+          <td title="'Value'" filter="{ targetValue: 'text'}" sortable="'targetValue'">
+            {{event.targetValue}}
+          </td>
+          <td title="'InnerText'" filter="{ targetInnerText: 'text'}" sortable="'targetInnerText'">
+            {{event.targetInnerText}}
+          </td>
+          <td title="'ID'" filter="{ targetId: 'text'}" sortable="'targetId'">
+            {{event.targetId}}
           </td>
       </tr>
     </table>

@@ -3,17 +3,7 @@ angular.module('flapperNews')
   '$http',
   function($http){
     var o = {
-
-      events: [
-        /*
-        {title: 'First Event', link: '#home', upvotes: 0,
-          comments: [{author: 'Joe', body: 'Good job guys!', upvotes: 0}]
-        },
-        {title: 'Second Event', link: '#home', upvotes: 0,
-          comments: [{author: 'Joe', body: 'Good job guys!', upvotes: 0}]
-        }
-        */
-      ]
+      events: []
     };
 
     o.get = function(id) {
@@ -38,17 +28,6 @@ angular.module('flapperNews')
       return $http.put('/events/' + event.id + '/upvote.json')
         .success(function(data){
           event.upvotes += 1;
-        });
-    };
-
-    o.addComment = function(id, comment) {
-      return $http.event('/events/' + id + '/comments.json', comment)
-    };
-
-    o.upvoteComment = function(event, comment) {
-      return $http.put('/events/' + event.id + '/comments/' + comment.id + '/upvote.json')
-        .success(function(data){
-          comment.upvotes += 1;
         });
     };
 
