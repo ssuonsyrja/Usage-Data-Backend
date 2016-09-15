@@ -19,7 +19,7 @@
     <table ng-table="tableParams" class="table" show-filter="true">
       <tr ng-repeat="event in data">
           <td title="'Timestamp'" sortable="'timestamp'">
-            {{event.timestamp}}
+            {{event.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss Z'}}
           </td>
           <td title="'Type'" filter="{ type: 'text'}" sortable="'type'">
             {{event.eventType}}
