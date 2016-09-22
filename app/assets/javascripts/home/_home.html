@@ -21,26 +21,29 @@
           <td title="'Timestamp'" sortable="'timestamp'">
             {{event.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss Z'}}
           </td>
-          <td title="'Type'" filter="{ type: 'text'}" sortable="'type'">
+          <td title="'Monitored event type'" filter="{ type: 'text'}" sortable="'type'">
             {{event.eventType}}
           </td>
-          <td title="'Session ID'" filter="{ type: 'text'}" sortable="'sessionId'">
-            {{event.sessionId}}
-          </td>
-          <td title="'Target'" sortable="'target'">
+          <td title="'Monitored element'" sortable="'target'">
             {{event.target}}
+          </td>
+          <td title="'Element selector'" sortable="'targetSelector'">
+            {{event.targetSelector}}
+          </td>
+          <td title="'Event target ID'" filter="{ targetId: 'text'}" sortable="'targetId'">
+            {{event.targetId}}
+          </td>
+          <td title="'Target value'" filter="{ targetValue: 'text'}" sortable="'targetValue'">
+            {{event.targetValue}}
+          </td>
+          <td title="'Target InnerText'" filter="{ targetInnerText: 'text'}" sortable="'targetInnerText'">
+            {{event.targetInnerText}}
           </td>
           <td title="'BaseURI'" filter="{ targetBaseURI: 'text'}" sortable="'targetBaseURI'">
             {{event.targetBaseURI}}
           </td>
-          <td title="'Value'" filter="{ targetValue: 'text'}" sortable="'targetValue'">
-            {{event.targetValue}}
-          </td>
-          <td title="'InnerText'" filter="{ targetInnerText: 'text'}" sortable="'targetInnerText'">
-            {{event.targetInnerText}}
-          </td>
-          <td title="'ID'" filter="{ targetId: 'text'}" sortable="'targetId'">
-            {{event.targetId}}
+          <td title="'Session ID'" filter="{ type: 'text'}" sortable="'sessionId'">
+            {{event.sessionId}}
           </td>
       </tr>
     </table>
