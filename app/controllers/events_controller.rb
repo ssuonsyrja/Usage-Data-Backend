@@ -43,6 +43,6 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:eventType, :sessionId, :timestamp, :targetBaseURI, :targetValue, :targetInnerText, :targetId)
+    params.require(:event).permit(:targetSelector, :eventType, :sessionId, :timestamp, :target, :targetBaseURI, :targetValue, :targetInnerText, :targetId)
   end
 end

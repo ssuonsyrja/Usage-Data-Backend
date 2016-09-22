@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915075729) do
+ActiveRecord::Schema.define(version: 20160922132823) do
 
   create_table "events", force: :cascade do |t|
     t.string   "target"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160915075729) do
     t.string   "targetInnerText"
     t.string   "targetId"
     t.string   "sessionId"
+    t.string   "targetSelector"
   end
 
 end
