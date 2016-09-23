@@ -5,7 +5,16 @@ class EventsController < ApplicationController
   end
 
   def create
-    respond_with Event.create(event_params)
+    event = { "host" => request.headers["Host"], "browser" => request.headers["User-Agent"] }
+    puts "Event:"
+    puts event
+    puts "First event_params:"
+    puts event_params
+    event.merge!( event_params )
+    puts "Final event:"
+    puts event
+
+    respond_with Event.create(event)
     #old = Event.where event_type: params[:event][:event_type]
     #if old == nil
     #  respond_with Event.create(event_params)
@@ -43,6 +52,6 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:targetSelector, :eventType, :userId, :sessionId, :timestamp, :target, :targetBaseURI, :targetValue, :targetInnerText, :targetId)
+    params.require(:event).permit(:targetSelector, :eventType, :userId, :sessionId, :timestamp, :target, :targetBaseURI, :targetValue, :targetInnerText, :targetId, :host, :browser)
   end
 end
