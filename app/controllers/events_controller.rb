@@ -6,14 +6,9 @@ class EventsController < ApplicationController
 
   def create
     event = { "host" => request.headers["Host"], "browser" => request.headers["User-Agent"] }
-    puts "Event:"
-    puts event
-    puts "First event_params:"
-    puts event_params
-    event.merge!( event_params )
-    puts "Final event:"
-    puts event
 
+    event.merge!( event_params )
+    
     respond_with Event.create(event)
     #old = Event.where event_type: params[:event][:event_type]
     #if old == nil
